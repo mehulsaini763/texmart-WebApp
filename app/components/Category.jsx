@@ -1,14 +1,23 @@
-import React from 'react'
+import { useRouter } from "next/navigation";
+import React from "react";
 
-const Category = ({url}) => {
-    const handleClick = () => {
-
-    }
+const Category = ({ url, category }) => {
+  const router = useRouter();
+  const handleClick = () => {
+    router.push(`/category/${category}`)
+  };
   return (
-    <div className='flex-shrink-0 py-2' onClick={handleClick}>
-        <img className='w-28' src={url} alt="" />
+    <>
+    <div className="hidden lg:block flex-shrink-0 py-2" onClick={handleClick}>
+      <img className="w-28" src={url} alt="" />
     </div>
-  )
-}
 
-export default Category
+    {/* MOBILE */}
+    <div className="flex-shrink-0 lg:hidden" onClick={handleClick}>
+      <img className="w-20" src={url} alt="" />
+    </div>
+    </>
+  );
+};
+
+export default Category;

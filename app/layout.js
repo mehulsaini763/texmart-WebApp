@@ -1,18 +1,20 @@
-import Navbar from './components/Navbar'
-import './globals.css'
+import Navbar from "./components/Navbar";
+import MobileNavbar from "./components/MobileNavbar";
+import "./globals.css";
 
 export const metadata = {
-  title: 'TexMart',
-  description: 'Online Marketplace',
-}
+  title: "TexMart",
+  description: "Online Marketplace",
+};
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        <Navbar/>
+      <body className="overflow-x-hidden h-screen bg-neutral-800 lg:min-w-[1024px]">
+        <Navbar />
+        <MobileNavbar/>
         {children}
-        </body>
+      </body>
     </html>
-  )
+  );
 }
