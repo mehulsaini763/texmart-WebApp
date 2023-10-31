@@ -1,9 +1,7 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import React, { useState } from "react";
-import useScreenSize from "../customHook/useScreenSize";
 
 const Banner = () => {
-  const screenSize = useScreenSize();
   const [curr, setCurr] = useState(0);
 
   const prev = () => {
@@ -22,30 +20,16 @@ const Banner = () => {
     "https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/8a89ee09acc1a9e5.jpg?q=20",
   ];
 
-  if (screenSize.width >= 1024) {
     return (
-      <div className="hidden relative rounded-md overflow-hidden">
+      <div className="relative overflow-hidden lg:rounded-md">
         <div className="absolute flex inset-0 items-center justify-between z-10">
-          <button onClick={prev}>
+          <button onClick={prev} className="hidden lg:block">
             <ChevronLeftIcon className="text-black w-8 h-8" />
           </button>
-          <button onClick={next}>
+          <button onClick={next} className="hidden lg:block">
             <ChevronRightIcon className="text-black w-8 h-8" />
           </button>
         </div>
-        <div
-          className="flex transition-transform ease-out duration-300"
-          style={{ transform: `translateX(-${curr * 100}%)` }}
-        >
-          {banners.map((img) => {
-            return <img className={`rounded-md `} key={img} src={img} />;
-          })}
-        </div>
-      </div>
-    );
-  } else {
-    return (
-      <div className="relative overflow-hidden">
         <div
           className="flex transition-transform ease-out duration-300"
           style={{ transform: `translateX(-${curr * 100}%)` }}
@@ -56,7 +40,9 @@ const Banner = () => {
         </div>
       </div>
     );
-  }
+  
+      
+    
 };
 
 export default Banner;

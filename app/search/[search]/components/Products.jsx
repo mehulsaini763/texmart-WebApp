@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import AssuredLogo from "../../../../public/texmartAssured.png";
-import { v4 } from "uuid";
 import { useRouter } from "next/navigation";
 
 const Products = ({ products }) => {
@@ -9,14 +8,19 @@ const Products = ({ products }) => {
     router.push(`/product/${id}`);
   };
 
-  if (products == null) {
-    return <p className="text-6xl">LOADING.....</p>;
+  if (products.length == 0) {
+    return (
+      <div className="p-8 text-white text-xl overflow-hidden">
+        {/* <img src={NoProduct.src} className="object-contain w-full" /> */}
+        <p>No Products Available</p>
+      </div>
+    );
   }
 
   return (
     <>
       {products.map((p) => (
-        <div key={v4()}>
+        <div key={p.id}>
           <div
             className="flex text-white m-8 gap-2 hover:cursor-pointer"
             onClick={() => goToProduct(p.id)}
@@ -35,7 +39,7 @@ const Products = ({ products }) => {
                 {p.keyfeatures.map((kf, i) => {
                   if (i < 5) {
                     return (
-                      <li key={v4()} className="text-base">
+                      <li key={kf} className="text-base">
                         {kf}
                       </li>
                     );

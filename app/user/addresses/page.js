@@ -1,36 +1,21 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "@/app/firebase";
+import Loading from "@/app/components/Loading";
+import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const page = () => {
+  const router = useRouter();
+  const profile = useSelector((state) => state.profile.data);
+
   useEffect(() => {
-    getAddresses();
+    if (profile == null) {
+      router.push("/home");
+    }
   }, []);
 
-  const [addresses, setAddresses] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  if (useSelector((state) => state.products.data) == null) return <Loading />;
 
-  const getAddresses = async () => {
-    const docRef = doc(db, "users", "test");
-    const docSnap = await getDoc(docRef);
-
-    if (!docSnap.exists()) {
-      windows.alert("CREATE ACCOUNT");
-    } else {
-      const profile = docSnap.data();
-      setAddresses(profile.addresses);
-      setIsLoading(false);
-    }
-  };
-
-  if (isLoading) {
-    return (
-      <div className="text-white text-center text-6xl">
-        <div>LOADING...</div>
-      </div>
-    );
-  }
   return (
     <div className="mx-auto max-w-6xl flex flex-col gap-4 p-4 text-white">
       <div className="flex gap-8 text-2xl items-center">
@@ -40,9 +25,9 @@ const page = () => {
         </button>
       </div>
       <div className="flex items-center">
-        {addresses.length == 0
+        {profile.addresses.length == 0
           ? "No Addresses"
-          : addresses.map((a, i) => {
+          : profile.addresses.map((a, i) => {
               return (
                 <div className="bg-neutral-900 rounded-md p-4 space-y-4 text-base max-w-xs">
                   <div className="text-yellow-300 flex justify-between items-center font-semibold">
@@ -59,7 +44,7 @@ const page = () => {
                     <p>{a.phoneNo}</p>
                   </div>
                   <div className="font-bold">{`${a.address}, ${a.address2}, ${a.landmark}, ${a.city}, ${a.state} - ${a.pincode}`}</div>
-                  <div className="flex justify-between items-center mx-16">
+                  <div className="flex justify-between items-center mx-16 gap-4">
                     <button className="rounded-md border border-neutral-700 px-4 py-2">DELETE</button>
                     <button className="rounded-md border border-neutral-700 px-4 py-2">UPDATE</button>
                   </div>

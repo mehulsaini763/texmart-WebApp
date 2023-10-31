@@ -6,12 +6,11 @@ import {
   ShoppingCartIcon,
   UserIcon,
 } from "@heroicons/react/24/solid";
-import User from "./User";
-import Menu from "./Menu";
-import LocationButton from "./LocationButton";
+import User from "../home/components/User";
+import Menu from "../home/components/Menu";
 import { auth } from "../firebase";
-import MiniLogin from "./MiniLogin";
-import FullLogin from "./FullLogin";
+import MiniLogin from "../home/components/MiniLogin";
+import FullLogin from "../home/components/FullLogin";
 
 const Navbar = () => {
   const router = useRouter();
@@ -36,7 +35,7 @@ const Navbar = () => {
         <div className="mx-auto max-w-6xl flex items-center gap-8 py-2 px-4">
           <button
             className="text-4xl font-bold text-white mb-2"
-            onClick={() => router.push("/")}
+            onClick={() => router.push("/home")}
           >
             texmart
           </button>
@@ -51,7 +50,7 @@ const Navbar = () => {
             />
           </div>
           <div className="flex gap-8">
-            <LocationButton />
+            {/* <LocationButton /> */}
             <div
               className="relative w-6 h-6"
               onMouseOver={() => setShowUser(true)}

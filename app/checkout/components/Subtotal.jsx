@@ -1,4 +1,3 @@
-import useScreenSize from "@/app/customHook/useScreenSize";
 import React, { useEffect, useState } from "react";
 
 const Subtotal = ({ cart }) => {
@@ -6,7 +5,6 @@ const Subtotal = ({ cart }) => {
     previousPriceAndDiscount();
   }, [cart]);
 
-  const screenSize = useScreenSize();
   const [previousPrice, setPreviousPrice] = useState(0);
   const [discount, setDiscount] = useState(0);
   const [total, setTotal] = useState(0);
@@ -16,7 +14,6 @@ const Subtotal = ({ cart }) => {
     let totalPrePrice = 0;
 
     cart.map((p) => {
-      // console.log(typeof +p.price)
       totalPrice += +p.price * +p.quantity;
       let y =
         (Math.round(+p.discount) * +p.price) / (100 - Math.round(+p.discount));
@@ -28,8 +25,8 @@ const Subtotal = ({ cart }) => {
     setPreviousPrice(totalPrePrice);
     setDiscount(totalPrePrice - totalPrice);
   };
-  if (screenSize.width >= 1024) {
-    return (
+
+  return (
       <div className="bg-neutral-900 p-4 rounded-md">
         <h1 className="text-xl">ORDER SUMMARY</h1>
         <hr className="border border-neutral-500 my-2" />
@@ -55,34 +52,34 @@ const Subtotal = ({ cart }) => {
         </div>
       </div>
     );
-  } else {
-    return (
-      <div className="bg-neutral-900 py-2 px-4 rounded-md text-sm">
-        <h1 className="">ORDER SUMMARY</h1>
-        <hr className="border border-neutral-500 my-2" />
-        <div className="space-y-2 text-xs">
-          <div className="flex justify-between">
-            <p>
-              Price {`(${cart.length} ${cart.length == 1 ? "item" : "items"})`}
-            </p>
-            <p>₹{previousPrice}</p>
-          </div>
-          <div className="flex justify-between">
-            <p>Discount</p>
-            <p className="text-green-500">- ₹{discount}</p>
-          </div>
-          <div className="flex justify-between">
-            <p>Delivery Charges</p>
-            <p>FREE</p>
-          </div>
-          <div className="flex justify-between">
-            <p>Total Amount</p>
-            <p>₹{total}</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  // } else {
+  //   return (
+  //     <div className="bg-neutral-900 py-2 px-4 rounded-md text-sm">
+  //       <h1 className="">ORDER SUMMARY</h1>
+  //       <hr className="border border-neutral-500 my-2" />
+  //       <div className="space-y-2 text-xs">
+  //         <div className="flex justify-between">
+  //           <p>
+  //             Price {`(${cart.length} ${cart.length == 1 ? "item" : "items"})`}
+  //           </p>
+  //           <p>₹{previousPrice}</p>
+  //         </div>
+  //         <div className="flex justify-between">
+  //           <p>Discount</p>
+  //           <p className="text-green-500">- ₹{discount}</p>
+  //         </div>
+  //         <div className="flex justify-between">
+  //           <p>Delivery Charges</p>
+  //           <p>FREE</p>
+  //         </div>
+  //         <div className="flex justify-between">
+  //           <p>Total Amount</p>
+  //           <p>₹{total}</p>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 };
 
 export default Subtotal;

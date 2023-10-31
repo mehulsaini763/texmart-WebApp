@@ -2,11 +2,9 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { auth, db } from "@/app/firebase";
-import FullLogin from "@/app/components/FullLogin";
-import useScreenSize from "@/app/customHook/useScreenSize";
+import FullLogin from "@/app/home/components/FullLogin";
 
 const Action = ({ product }) => {
-  const screenSize = useScreenSize()
   const router = useRouter();
   const [showLogin, setShowLogin] = useState(false);
 
@@ -27,7 +25,6 @@ const Action = ({ product }) => {
     } else setShowLogin(true);
   };
 
-  if(screenSize.width>=1024){
     return (
       <>
         {showLogin && <FullLogin setShowLogin={setShowLogin} />}
@@ -56,8 +53,7 @@ const Action = ({ product }) => {
         </div>
       </>
     );
-  }else{
-    return (
+
       <>
         {showLogin && <FullLogin setShowLogin={setShowLogin} />}
         <div className="flex fixed bottom-0 inset-x-0 z-50">
@@ -75,8 +71,7 @@ const Action = ({ product }) => {
             </button>
         </div>
       </>
-    );
-  }
+
 };
 
 export default Action;

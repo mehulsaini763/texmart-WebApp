@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Category from "./Category";
 import ButtonRight from "./ButtonRight";
 import ButtonLeft from "./ButtonLeft";
-import useScreenSize from "../customHook/useScreenSize";
 
 const Categories = () => {
-  const screenSize = useScreenSize();
-
   const [curr, setCurr] = useState(0);
 
   const prev = () => {
@@ -75,9 +72,19 @@ const Categories = () => {
     },
   ];
 
-  if (screenSize.width >= 1024) {
-    return (
-      <div className="flex bg-neutral-900 rounded-md items-center">
+  return (
+    <>
+    {/* MOBILE */}
+      <div className="grid grid-cols-4 gap-2 lg:hidden">
+        {categories.map((o, i) => {
+          if (i < 8) {
+            return <Category key={o.src} url={o.src} category={o.name} />;
+          }
+        })}
+      </div>
+
+      {/* DESKTOP */}
+      <div className="hidden lg:flex bg-neutral-900 rounded-md items-center">
         <button className="h-28" onClick={prev}>
           <ButtonLeft />
         </button>
@@ -91,23 +98,12 @@ const Categories = () => {
             })}
           </div>
         </div>
-
         <button className="h-28" onClick={next}>
           <ButtonRight />
         </button>
       </div>
-    );
-  } else {
-    return (
-      <div className="grid grid-cols-4 gap-2 bg-neutral-800 rounded-md items-center m-4">
-        {categories.map((o, i) => {
-          if (i < 8) {
-            return <Category key={o.src} url={o.src} category={o.name} />;
-          }
-        })}
-      </div>
-    );
-  }
+    </>
+  );
 };
 
 export default Categories;

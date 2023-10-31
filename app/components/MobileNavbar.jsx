@@ -6,10 +6,10 @@ import {
   ShoppingCartIcon,
   UserIcon,
 } from "@heroicons/react/24/solid";
-import User from "./User";
-import Menu from "./Menu";
+import User from "../home/components/User";
+import Menu from "../home/components/Menu";
 import { auth } from "../firebase";
-import FullLogin from "./FullLogin";
+import FullLogin from "../home/components/FullLogin";
 
 const MobileNavbar = () => {
   const router = useRouter();

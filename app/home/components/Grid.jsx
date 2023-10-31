@@ -1,9 +1,6 @@
 import React from "react";
-import useScreenSize from "../customHook/useScreenSize";
 
 const Grid = (props) => {
-  const screenSize = useScreenSize();
-  if (screenSize.width >= 1024) {
     return (
       <div className="bg-neutral-900 rounded-md text-white p-4">
         <h1 className="text-2xl font-semibold">{props.title}</h1>
@@ -53,8 +50,7 @@ const Grid = (props) => {
         </div>
       </div>
     );
-  } else {
-    return (
+
       <div className="bg-neutral-900 rounded-md text-white p-2">
         <h1 className="text-xl font-semibold">{props.title}</h1>
         <div className="grid grid-cols-4 py-4 gap-4">
@@ -102,8 +98,7 @@ const Grid = (props) => {
           </div>
         </div>
       </div>
-    );
-  }
+
 };
 
 export default Grid;

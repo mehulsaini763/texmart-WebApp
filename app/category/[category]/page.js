@@ -1,54 +1,50 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { db } from "../../firebase";
-import { collection, getDocs } from "firebase/firestore";
 import SortFilter from "./components/SortFilter";
 import Products from "./components/Products";
-import useScreenSize from "@/app/customHook/useScreenSize";
+import Loading from "@/app/components/Loading";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "@/app/store/productSlice";
+import { getProfile } from "@/app/store/profileSlice";
 
 const page = ({ params }) => {
+  const dispatch = useDispatch();
+  const initialProducts = useSelector((state) => state.products.data);
+
   useEffect(() => {
-    getProducts();
+    if (initialProducts == null) {
+      dispatch(getProducts());
+      dispatch(getProfile());
+      console.log("DATA FETCHED");
+    }
   }, []);
 
-  const screenSize = useScreenSize();
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const category = params.category.split("%26");
+  const [products, setProducts] = useState(null);
 
-  const getProducts = async () => {
-    const querySnapshot = await getDocs(collection(db, "products"));
-    if (!querySnapshot.empty) {
+  useEffect(() => {
+    if (initialProducts != null) {
+      const category = params.category.split("%26");
       const temparr = [];
-      if (category.length == 2) {
-        querySnapshot.forEach((doc) => {
-          if (doc.data().category.includes(category[0])) {
-            temparr.push(doc.data());
+      initialProducts.forEach((p) => {
+        if (category.length == 2) {
+          if (
+            p.category.includes(category[0]) ||
+            p.category.includes(category[1])
+          ) {
+            temparr.push(p);
           }
-          if (doc.data().category.includes(category[1])) {
-            temparr.push(doc.data());
+        } else {
+          if (p.category.includes(category[0])) {
+            temparr.push(p);
           }
-        });
-      } else {
-        querySnapshot.forEach((doc) => {
-          if (doc.data().category.includes(category[0])) {
-            temparr.push(doc.data());
-          }
-        });
-      }
+        }
+      });
       setProducts(temparr);
     }
-    setIsLoading(false);
-  };
+  }, [initialProducts]);
 
-  if (isLoading) {
-    return (
-      <div className="absolute inset-0 bg-neutral-900 text-white h-full">
-        <div className="grid place-content-center">
-          <div>LOADING...</div>
-        </div>
-      </div>
-    );
+  if (products == null) {
+    return <Loading />;
   }
 
   if (products.length == 0) {
@@ -60,29 +56,18 @@ const page = ({ params }) => {
     );
   }
 
-  if (screenSize.width >= 1024) {
-    return (
-      <div className="bg-neutral-800">
-        <div className="flex mx-auto max-w-6xl p-4 gap-4">
-          <div className="w-1/4 bg-neutral-900 rounded-md p-4 h-fit text-white">
-            <SortFilter products={products} setProducts={setProducts} />
-          </div>
-          <div className="w-3/4 bg-neutral-900 rounded-md">
-            <Products products={products} />
-          </div>
-        </div>
-      </div>
-    );
-  } else {
-    return (
-      <>
-        <div className="bg-neutral-900">
+  return (
+    <div className="bg-neutral-800">
+      <div className="flex mx-auto max-w-6xl p-4 gap-4">
+        <div className="w-1/4 bg-neutral-900 rounded-md p-4 h-fit text-white">
           <SortFilter products={products} setProducts={setProducts} />
+        </div>
+        <div className="w-3/4 bg-neutral-900 rounded-md">
           <Products products={products} />
         </div>
-      </>
-    );
-  }
+      </div>
+    </div>
+  );
 };
 
 export default page;

@@ -33,13 +33,13 @@ const ProductDetails = ({ product }) => {
         </div>
       </div>
       <div className="bg-neutral-700 rounded-md p-2 border">
-        <LocationButton text={"Will be Deliverd Tommorrow @"} />
+        {/* <LocationButton text={"Will be Deliverd Tommorrow @"} /> */}
       </div>
       <div className="bg-neutral-900 rounded-md p-2">
         <h2 className="font-semibold px-2 pb-2">Key Features</h2>
         <ul className="list-disc pl-6">
           {product.keyfeatures.map((kf) => (
-            <li className="text-sm">{kf}</li>
+            <li className="text-sm" key={kf}>{kf}</li>
           ))}
         </ul>
       </div>

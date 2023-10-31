@@ -1,4 +1,3 @@
-import useScreenSize from "@/app/customHook/useScreenSize";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
@@ -7,7 +6,6 @@ const Subtotal = ({ cart }) => {
     previousPriceAndDiscount();
   }, [cart]);
 
-  const screenSize = useScreenSize();
   const router = useRouter();
   const [previousPrice, setPreviousPrice] = useState(0);
   const [discount, setDiscount] = useState(0);
@@ -29,76 +27,74 @@ const Subtotal = ({ cart }) => {
     setPreviousPrice(totalPrePrice);
     setDiscount(totalPrePrice - totalPrice);
   };
-  if (screenSize.width >= 1024) {
-    return (
-      <div className="bg-neutral-900 p-4 rounded-md">
-        <h1 className="text-xl">PRICE DETAILS</h1>
-        <hr className="border border-neutral-500 my-2" />
-        <div className="space-y-2 text-lg">
-          <div className="flex justify-between">
-            <p>
-              Price {`(${cart.length} ${cart.length == 1 ? "item" : "items"})`}
-            </p>
-            <p>₹{previousPrice}</p>
-          </div>
-          <div className="flex justify-between">
-            <p>Discount</p>
-            <p className="text-green-500">- ₹{discount}</p>
-          </div>
-          <div className="flex justify-between">
-            <p>Delivery Charges</p>
-            <p>FREE</p>
-          </div>
-          <div className="flex justify-between">
-            <p>Total Amount</p>
-            <p>₹{total}</p>
-          </div>
+
+  return (
+    <div className="bg-neutral-900 p-4 rounded-md">
+      <h1 className="text-xl">PRICE DETAILS</h1>
+      <hr className="border border-neutral-500 my-2" />
+      <div className="space-y-2 text-lg">
+        <div className="flex justify-between">
+          <p>
+            Price {`(${cart.length} ${cart.length == 1 ? "item" : "items"})`}
+          </p>
+          <p>₹{previousPrice}</p>
+        </div>
+        <div className="flex justify-between">
+          <p>Discount</p>
+          <p className="text-green-500">- ₹{discount}</p>
+        </div>
+        <div className="flex justify-between">
+          <p>Delivery Charges</p>
+          <p>FREE</p>
+        </div>
+        <div className="flex justify-between">
+          <p>Total Amount</p>
+          <p>₹{total}</p>
         </div>
       </div>
-    );
-  } else {
-    return (
-      <>
-        <div className="bg-neutral-900 p-4 rounded-md">
-          <h1 className="text-base">PRICE DETAILS</h1>
-          <hr className="border border-neutral-500 my-2" />
-          <div className="space-y-2 text-sm">
-            <div className="flex justify-between">
-              <p>
-                Price{" "}
-                {`(${cart.length} ${cart.length == 1 ? "item" : "items"})`}
-              </p>
-              <p>₹{previousPrice}</p>
-            </div>
-            <div className="flex justify-between">
-              <p>Discount</p>
-              <p className="text-green-500">- ₹{discount}</p>
-            </div>
-            <div className="flex justify-between">
-              <p>Delivery Charges</p>
-              <p>FREE</p>
-            </div>
-            <div className="flex justify-between">
-              <p>Total Amount</p>
-              <p>₹{total}</p>
-            </div>
-          </div>
-          <div className="fixed bottom-0 inset-x-0 flex items-center text-center">
-            <p className="w-1/2 bg-neutral-950 text-lg font-bold  px-2 py-4">
-              ₹{total}
-            </p>
-            <button
-              className="w-1/2 bg-yellow-300 text-black font-bold text-center px-2 py-4"
-              onClick={() => router.push("/checkout")}
-            >
-              Proceed to Buy
-            </button>
-          </div>
-        </div>
-        <hr className="my-6" />
-      </>
-    );
-  }
+    </div>
+  );
 };
 
+// {
+//   /* <> */
+// }
+//   <div className="bg-neutral-900 p-4 rounded-md">
+//     <h1 className="text-base">PRICE DETAILS</h1>
+//     <hr className="border border-neutral-500 my-2" />
+//     <div className="space-y-2 text-sm">
+//       <div className="flex justify-between">
+//         <p>
+//           Price{" "}
+//           {`(${cart.length} ${cart.length == 1 ? "item" : "items"})`}
+//         </p>
+//         <p>₹{previousPrice}</p>
+//       </div>
+//       <div className="flex justify-between">
+//         <p>Discount</p>
+//         <p className="text-green-500">- ₹{discount}</p>
+//       </div>
+//       <div className="flex justify-between">
+//         <p>Delivery Charges</p>
+//         <p>FREE</p>
+//       </div>
+//       <div className="flex justify-between">
+//         <p>Total Amount</p>
+//         <p>₹{total}</p>
+//       </div>
+//     </div>
+//     <div className="fixed bottom-0 inset-x-0 flex items-center text-center">
+//       <p className="w-1/2 bg-neutral-950 text-lg font-bold  px-2 py-4">
+//         ₹{total}
+//       </p>
+//       <button
+//         className="w-1/2 bg-yellow-300 text-black font-bold text-center px-2 py-4"
+//         onClick={() => router.push("/checkout")}
+//       >
+//         Proceed to Buy
+//       </button>
+//     </div>
+//   </div>
+//   <hr className="my-6" />
+// </>
 export default Subtotal;
