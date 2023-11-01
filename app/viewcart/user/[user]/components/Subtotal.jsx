@@ -29,10 +29,10 @@ const Subtotal = ({ cart }) => {
   };
 
   return (
-    <div className="bg-neutral-900 p-4 rounded-md">
-      <h1 className="text-xl">PRICE DETAILS</h1>
+    <div className="bg-neutral-900 p-4 rounded-md mx-2 lg:mx-0">
+      <h1 className="text-base lg:text-xl">PRICE DETAILS</h1>
       <hr className="border border-neutral-500 my-2" />
-      <div className="space-y-2 text-lg">
+      <div className="space-y-2 text-base lg:text-lg">
         <div className="flex justify-between">
           <p>
             Price {`(${cart.length} ${cart.length == 1 ? "item" : "items"})`}

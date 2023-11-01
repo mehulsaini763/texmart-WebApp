@@ -6,11 +6,12 @@ import {
   ShoppingCartIcon,
   UserIcon,
 } from "@heroicons/react/24/solid";
-import User from "../home/components/User";
-import Menu from "../home/components/Menu";
+import User from "./User";
+import Menu from "./Menu";
 import { auth } from "../firebase";
-import MiniLogin from "../home/components/MiniLogin";
-import FullLogin from "../home/components/FullLogin";
+import MiniLogin from "./MiniLogin";
+import FullLogin from "./FullLogin";
+import LocationButton from "./LocationButton";
 
 const Navbar = () => {
   const router = useRouter();
@@ -25,7 +26,7 @@ const Navbar = () => {
 
   const handleSearch = (e) => {
     if (e.key == "Enter") {
-      router.push(`/search/${e.target.value}`);
+      router.push(`/products/s&${e.target.value}`);
     }
   };
 
@@ -50,7 +51,7 @@ const Navbar = () => {
             />
           </div>
           <div className="flex gap-8">
-            {/* <LocationButton /> */}
+            <LocationButton />
             <div
               className="relative w-6 h-6"
               onMouseOver={() => setShowUser(true)}
@@ -73,7 +74,7 @@ const Navbar = () => {
               ) : showUser ? (
                 <div>
                   <UserIcon className="text-yellow-300 w-6 h-6" />
-                  <User />
+                  <User setShowUser={setShowUser} />
                 </div>
               ) : (
                 <button>

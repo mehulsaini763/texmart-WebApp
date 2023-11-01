@@ -9,7 +9,7 @@ const ProductCard = ({ product }) => {
   const router = useRouter();
 
   const handleChange = () => {
-    router.push(`/product/${product.id}`);
+    router.push(`/viewproduct/${product.id}`);
   };
 
   const previousPrice = () => {
@@ -20,7 +20,7 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="relative p-2 w-36 lg:p-4 lg:w-56 bg-neutral-950 rounded-md shrink-0 lg:space-y-2">
+    <div className="relative p-2 w-36 space-y-1 lg:p-4 lg:w-56 bg-neutral-950 rounded-md shrink-0 lg:space-y-2">
       <AddToWishlist product={product} />
       <img
         className="object-contain p-2 hover:cursor-pointer"
@@ -29,7 +29,7 @@ const ProductCard = ({ product }) => {
         onClick={handleChange}
       />
       <h1
-        className="text-white text-sm lg:text-lg font-semibold line-clamp-2 hover:cursor-pointer hover:text-yellow-300"
+        className="text-white text-xs lg:text-lg font-semibold line-clamp-2 hover:cursor-pointer hover:text-yellow-300"
         onClick={handleChange}
       >
         {product.title}

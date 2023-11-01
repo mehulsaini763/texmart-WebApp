@@ -1,6 +1,6 @@
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import React, { useState } from "react";
-import { auth } from "../../firebase";
+import { auth } from "../firebase";
 import {
   getAuth,
   signInWithEmailAndPassword,

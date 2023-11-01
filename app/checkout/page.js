@@ -19,21 +19,21 @@ const page = () => {
   if (useSelector((state) => state.profile.data) == null) return <Loading />;
 
   return (
-    <div className="text-white h-full mx-auto max-w-6xl flex gap-4 p-4">
-      <div className="w-2/3 space-y-4">
-        <div className="flex gap-4">
+    <div className="text-white h-full mx-auto max-w-6xl flex flex-col lg:flex-row gap-2 p-2 lg:gap-4 lg:p-4">
+      <div className="lg:w-2/3 space-y-2 lg:space-y-4">
+        <div className="flex flex-col lg:flex-row gap-2 lg:gap-4">
           <div className="bg-neutral-900 p-4 rounded-md">
-            <p className="pb-2 text-lg font-bold">Shipping Address</p>
-            <div>{profile.addresses[0].type}</div>
-            <div>
+            <p className="pb-2 text-base lg:text-lg font-bold">Shipping Address</p>
+            <div className="text-sm lg:text-lg">{profile.addresses[0].type}</div>
+            <div className="text-sm lg:text-lg">
               {`${profile.addresses[0].address}, ${profile.addresses[0].address2}, ${profile.addresses[0].landmark}, ${profile.addresses[0].city}, ${profile.addresses[0].state} - ${profile.addresses[0].pincode}`.toUpperCase()}
             </div>
             <div>Mobile: {profile.addresses[0].phoneNo}</div>
           </div>
           <div className="bg-neutral-900 p-4 rounded-md">
-            <p className="pb-2 text-lg font-bold">Billing Address</p>
-            <div>{profile.addresses[0].type}</div>
-            <div>
+            <p className="pb-2 text-base lg:text-lg font-bold">Billing Address</p>
+            <div className="text-sm lg:text-lg">{profile.addresses[0].type}</div>
+            <div className="text-sm lg:text-lg">
               {`${profile.addresses[0].address}, ${profile.addresses[0].address2}, ${profile.addresses[0].landmark}, ${profile.addresses[0].city}, ${profile.addresses[0].state} - ${profile.addresses[0].pincode}`.toUpperCase()}
             </div>
             <div>Mobile: {profile.addresses[0].phoneNo}</div>
@@ -50,23 +50,24 @@ const page = () => {
         <div className="bg-neutral-900 p-4 rounded-md">
           {profile.cart.map((p) => (
             <div>
-              <p className="text-lg font-bold">Available to Deliver @</p>
+              <p className="text-base lg:text-lg font-bold">Available to Deliver @</p>
               <div className="flex items-center">
-                <div>{`${profile.addresses[0].address}, ${profile.addresses[0].address2}, ${profile.addresses[0].landmark}, ${profile.addresses[0].city}, ${profile.addresses[0].state} - ${profile.addresses[0].pincode}`}</div>
+                <div className="hidden lg:block">{`${profile.addresses[0].address}, ${profile.addresses[0].address2}, ${profile.addresses[0].landmark}, ${profile.addresses[0].city}, ${profile.addresses[0].state} - ${profile.addresses[0].pincode}`}</div>
                 <div>
                   <img
-                    className="object-contain w-44"
+                    className="object-contain p-4 lg:p-2 w-36"
                     src={p.thumbnail}
                     alt=""
                   />
                 </div>
                 <div>{p.title}</div>
               </div>
+              <hr className="border-1 border-neutral-700 my-2"/>
             </div>
           ))}
         </div>
       </div>
-      <div className="w-1/3">
+      <div className="lg:w-1/3">
         <Subtotal cart={profile.cart} />
       </div>
     </div>

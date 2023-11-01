@@ -6,7 +6,7 @@ const page = () => {
     alert("Changes Saved")
   }
   return (
-    <div className="mx-auto max-w-4xl flex flex-col gap-8 p-16 text-black">
+    <div className="mx-auto max-w-4xl flex flex-col gap-8 p-4 lg:p-16 text-black">
       <p className="text-2xl text-white">My Profile</p>
       <div className="flex gap-4">
         <input className="w-full rounded-md px-4 py-2" type="text" placeholder="First Name"/>

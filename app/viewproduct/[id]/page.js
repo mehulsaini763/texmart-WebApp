@@ -32,23 +32,25 @@ const page = ({ params }) => {
       {products.map(
         (product) =>
           product.id == params.id && (
-            <div className="py-4 bg-neutral-800" key={product.id}>
+            <div className="py-4 px-2 bg-neutral-800" key={product.id}>
               <div className="max-w-6xl mx-auto">
-                <div className="flex gap-4">
-                  <div className="w-1/2">
+                <div className="flex flex-col lg:flex-row gap-4">
+                  <div className="lg:w-1/2">
                     <ProductImages images={product.images} />
                     <Action product={product} />
                   </div>
-                  <div className="w-1/2">
+                  <div className="lg:w-1/2">
                     <ProductDetails product={product} />
                   </div>
                 </div>
-                <div className="space-y-4 my-4">
+                <div className="space-y-2 my-2 lg:space-y-4 lg:my-4">
                   <Specification specification={product.specifications} />
                   <Overview overview={product.overview} />
                   <ProductShowcase />
                   <Reviews />
-                  <Section title="Similar Product" catOne="smartphones" />
+                  <div className="rounded-md overflow-clip">
+                    <Section title="Similar Product" catOne="smartphones" />
+                  </div>
                   <div className="p-4"></div>
                 </div>
               </div>

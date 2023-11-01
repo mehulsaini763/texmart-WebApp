@@ -4,8 +4,6 @@ import Banner from "./components/Banner";
 import Categories from "./components/Categories";
 import Grid from "./components/Grid";
 import Section from "./components/Section";
-import Navbar from "../components/Navbar";
-import MobileNavbar from "../components/MobileNavbar";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "@/app/store/productSlice";
 import { getProfile } from "@/app/store/profileSlice";

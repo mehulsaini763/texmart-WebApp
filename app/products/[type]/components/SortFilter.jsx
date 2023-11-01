@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "../page.css";
+import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 
-const SortFilter = ({ products, setProducts }) => {
+const SortFilter = ({ products, setProducts, setShowSortFilter }) => {
   const [baseSort, setbaseSort] = useState(products);
   const [brands, setBrands] = useState([]);
   const [filter, setFilter] = useState({
@@ -76,9 +77,17 @@ const SortFilter = ({ products, setProducts }) => {
   };
 
   return (
-    <div className="sortfilter space-y-4">
+    <div className="sortfilter space-y-4 p-2 lg:p-0">
       <div className="space-y-2">
-        <p className="text-lg font-medium">SORT BY</p>
+        <div className="flex justify-between">
+          <p className="text-lg font-medium">SORT BY</p>
+          <button
+            className="lg:hidden"
+            onClick={() => setShowSortFilter(false)}
+          >
+            <ArrowLeftIcon className="w-6 h-6" />
+          </button>
+        </div>
         <select
           className="bg-neutral-900 rounded-md border p-2 se"
           onChange={(e) => handleSort(e.target.value)}
@@ -96,6 +105,7 @@ const SortFilter = ({ products, setProducts }) => {
           <div className="options">
             <input
               type="checkbox"
+              checked={filter.price.includes(10000) ? true : false}
               onChange={(e) => {
                 priceFilter(e.target.checked, 10000, 20000);
               }}
@@ -105,6 +115,7 @@ const SortFilter = ({ products, setProducts }) => {
           <div className="options">
             <input
               type="checkbox"
+              checked={filter.price.includes(20001) ? true : false}
               onChange={(e) => {
                 priceFilter(e.target.checked, 20001, 30000);
               }}
@@ -114,6 +125,7 @@ const SortFilter = ({ products, setProducts }) => {
           <div className="options">
             <input
               type="checkbox"
+              checked={filter.price.includes(30001) ? true : false}
               onChange={(e) => {
                 priceFilter(e.target.checked, 30001, 50000);
               }}
@@ -123,6 +135,7 @@ const SortFilter = ({ products, setProducts }) => {
           <div className="options">
             <input
               type="checkbox"
+              checked={filter.price.includes(50001) ? true : false}
               onChange={(e) => {
                 priceFilter(e.target.checked, 50001, 100000);
               }}
@@ -140,6 +153,7 @@ const SortFilter = ({ products, setProducts }) => {
               <div key={b} className="options">
                 <input
                   type="checkbox"
+                  checked={filter.brands.includes(b) ? true : false}
                   onChange={(e) => {
                     brandFilter(e.target.checked, b);
                   }}
@@ -149,6 +163,28 @@ const SortFilter = ({ products, setProducts }) => {
             );
           })}
         </div>
+      </div>
+
+      <div className="lg:hidden absolute bottom-0 inset-x-0 flex bg-neutral-950 justify-between items-center">
+        <button
+          className="w-full py-4"
+          onClick={() => {
+            setFilter({
+              price: [],
+              brands: [],
+            });
+            setProducts([...baseSort]);
+          }}
+        >
+          Clear
+        </button>
+        <hr className="py-6 border border-neutral-700" />
+        <button
+          className="w-full py-4"
+          onClick={() => setShowSortFilter(false)}
+        >
+          Apply
+        </button>
       </div>
     </div>
   );

@@ -27,59 +27,31 @@ const Subtotal = ({ cart }) => {
   };
 
   return (
-      <div className="bg-neutral-900 p-4 rounded-md">
-        <h1 className="text-xl">ORDER SUMMARY</h1>
-        <hr className="border border-neutral-500 my-2" />
-        <div className="space-y-2 text-lg">
-          <div className="flex justify-between">
-            <p>
-              Price {`(${cart.length} ${cart.length == 1 ? "item" : "items"})`}
-            </p>
-            <p>₹{previousPrice}</p>
-          </div>
-          <div className="flex justify-between">
-            <p>Discount</p>
-            <p className="text-green-500">- ₹{discount}</p>
-          </div>
-          <div className="flex justify-between">
-            <p>Delivery Charges</p>
-            <p>FREE</p>
-          </div>
-          <div className="flex justify-between">
-            <p>Total Amount</p>
-            <p>₹{total}</p>
-          </div>
+    <div className="bg-neutral-900 p-4 rounded-md">
+      <h1 className="text-xl">ORDER SUMMARY</h1>
+      <hr className="border-1 border-neutral-700 my-2" />
+      <div className="space-y-2 text-base lg:text-lg">
+        <div className="flex justify-between">
+          <p>
+            Price {`(${cart.length} ${cart.length == 1 ? "item" : "items"})`}
+          </p>
+          <p>₹{previousPrice}</p>
+        </div>
+        <div className="flex justify-between">
+          <p>Discount</p>
+          <p className="text-green-500">- ₹{discount}</p>
+        </div>
+        <div className="flex justify-between">
+          <p>Delivery Charges</p>
+          <p>FREE</p>
+        </div>
+        <div className="flex justify-between">
+          <p>Total Amount</p>
+          <p>₹{total}</p>
         </div>
       </div>
-    );
-  // } else {
-  //   return (
-  //     <div className="bg-neutral-900 py-2 px-4 rounded-md text-sm">
-  //       <h1 className="">ORDER SUMMARY</h1>
-  //       <hr className="border border-neutral-500 my-2" />
-  //       <div className="space-y-2 text-xs">
-  //         <div className="flex justify-between">
-  //           <p>
-  //             Price {`(${cart.length} ${cart.length == 1 ? "item" : "items"})`}
-  //           </p>
-  //           <p>₹{previousPrice}</p>
-  //         </div>
-  //         <div className="flex justify-between">
-  //           <p>Discount</p>
-  //           <p className="text-green-500">- ₹{discount}</p>
-  //         </div>
-  //         <div className="flex justify-between">
-  //           <p>Delivery Charges</p>
-  //           <p>FREE</p>
-  //         </div>
-  //         <div className="flex justify-between">
-  //           <p>Total Amount</p>
-  //           <p>₹{total}</p>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   );
-  // }
+    </div>
+  );
 };
 
 export default Subtotal;

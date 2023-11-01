@@ -6,10 +6,10 @@ import {
   ShoppingCartIcon,
   UserIcon,
 } from "@heroicons/react/24/solid";
-import User from "../home/components/User";
-import Menu from "../home/components/Menu";
+import User from "./User";
+import Menu from "./Menu";
 import { auth } from "../firebase";
-import FullLogin from "../home/components/FullLogin";
+import FullLogin from "./FullLogin";
 
 const MobileNavbar = () => {
   const router = useRouter();
@@ -24,7 +24,7 @@ const MobileNavbar = () => {
 
   const handleSearch = (e) => {
     if (e.key == "Enter") {
-      router.push(`/search/${e.target.value}`);
+      router.push(`/products/s&${e.target.value}`);
     }
   };
   return (
@@ -33,11 +33,12 @@ const MobileNavbar = () => {
         <div className="flex items-center gap-2">
           <Menu />
           <button
-            className="text-2xl font-bold text-white mb-2 grow text-start"
+            className="text-2xl font-bold text-white mb-2 text-start"
             onClick={() => router.push("/")}
           >
             texmart
           </button>
+          <div className="w-full"></div>
           <div className="flex gap-4">
             <div
               className="w-6 h-6"
@@ -49,7 +50,7 @@ const MobileNavbar = () => {
             >
               <UserIcon className="text-white w-6 h-6" />
             </div>
-            {showUser && <User />}
+            {showUser && <User setShowUser={setShowUser}/>}
             <button onClick={handleCart}>
               <ShoppingCartIcon className="text-white w-6 h-6" />
             </button>

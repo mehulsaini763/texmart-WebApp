@@ -4,7 +4,7 @@ import React from "react";
 const Category = ({ url, category }) => {
   const router = useRouter();
   const handleClick = () => {
-    router.push(`/category/${category}`)
+    router.push(`/products/cat&${category}`)
   };
   return (
     <>

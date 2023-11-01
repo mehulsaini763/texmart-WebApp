@@ -17,8 +17,8 @@ const Section = (props) => {
   };
 
   return (
-    <div className="bg-neutral-900 rounded-md p-2 space-y-2 lg:relative lg:p-4 lg:space-y-4">
-      <h1 className="text-lg font-semibold text-white lg:text-2xl">
+    <div className="bg-neutral-900 lg:rounded-md p-2 space-y-2 lg:relative lg:p-4 lg:space-y-4">
+      <h1 className="text-lg font-semibold px-2 text-white lg:text-2xl">
         {props.title}
       </h1>
       <div className="flex overflow-x-scroll gap-2 lg:gap-4">

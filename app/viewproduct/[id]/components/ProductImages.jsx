@@ -4,8 +4,19 @@ import React, { useState } from "react";
 const ProductImages = (props) => {
   const [imgUrl, setImgUrl] = useState(null);
 
-    return (
-      <div className="flex bg-neutral-900 rounded-md p-4 gap-4">
+  return (
+    <>
+      {/* MOBILE */}
+      <div className="lg:hidden flex p-4">
+        {props.images.map((u, i) => {
+          if (i < 4) {
+            return <img key={u} className="object-contain w-48 mx-16" src={u} />;
+          }
+        })}
+      </div>
+
+      {/* DESKTOP */}
+      <div className="hidden lg:flex bg-neutral-900 rounded-md p-4 gap-4">
         <div id="column1" className="shrink-0">
           <div className="flex flex-col gap-2">
             {props.images.map((u, i) => {
@@ -34,19 +45,8 @@ const ProductImages = (props) => {
           />
         </div>
       </div>
-    );
-
-      <>
-      <div className="flex p-4">
-        {props.images.map((u, i) => {
-          if (i < 4) {
-            return <img className="object-contain w-48 mx-16" src={u} />;
-          }
-        })}
-      </div>
-      <div>pagination</div>
-      </>
- 
+    </>
+  );
 };
 
 export default ProductImages;

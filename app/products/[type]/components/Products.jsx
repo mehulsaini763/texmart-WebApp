@@ -21,8 +21,42 @@ const Products = ({ products }) => {
     <>
       {products.map((p) => (
         <div key={p.id}>
+          {/* MOBILE */}
+          <div className="flex lg:hidden text-white p-4 gap-2">
+            <div className="w-1/3 p-2">
+              <img
+                className="object-contain"
+                src={p.thumbnail}
+                onClick={() => goToProduct(p.id)}
+              />
+            </div>
+            <div className="w-2/3">
+              <p
+                className="text-base line-clamp-3"
+                onClick={() => goToProduct(p.id)}
+              >
+                {p.title}
+              </p>
+              <div className="flex gap-2 items-center">
+              <p className="text-lg font-semibold">₹{p.price}</p>
+              <p className="text-xs">{p.discount}% off</p>
+              </div>
+              <p className="text-xs line-through text-neutral-500">
+                MRP:₹{p.price}
+              </p>
+              <div className="w-full my-1">
+                <img
+                  className="w-14 object-contain"
+                  src={AssuredLogo.src}
+                  alt="Assured"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* DESKTOP */}
           <div
-            className="flex text-white m-8 gap-2 hover:cursor-pointer"
+            className="hidden lg:flex text-white m-8 gap-2 hover:cursor-pointer"
             onClick={() => goToProduct(p.id)}
           >
             <div className="w-2/6">
@@ -65,7 +99,7 @@ const Products = ({ products }) => {
               </div>
             </div>
           </div>
-          <hr className="m-8 border-neutral-500 " />
+          <hr className="m-2 lg:m-8 border-neutral-500 " />
         </div>
       ))}
     </>
