@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import ProductCard from "./ProductCard";
 import ButtonLeft from "./ButtonLeft";
 import ButtonRight from "./ButtonRight";
 import { useSelector } from "react-redux";
 
 const Section = (props) => {
+  const scrollRef = useRef(null);
   const [products, setProducts] = useState(
     useSelector((state) => state.products.data)
   );
@@ -12,6 +13,7 @@ const Section = (props) => {
   const prev = () => {
     setCurr(curr == 0 ? 0 : curr - 1);
   };
+
   const next = () => {
     setCurr(curr == 2 ? 0 : curr + 1);
   };
@@ -21,7 +23,8 @@ const Section = (props) => {
       <h1 className="text-lg font-semibold px-2 text-white lg:text-2xl">
         {props.title}
       </h1>
-      <div className="flex overflow-x-scroll gap-2 lg:gap-4">
+
+      <div className="lg:hidden flex overflow-x-scroll gap-2">
         {products.map((p) => {
           if (
             p.category.includes(props.catOne) ||
@@ -30,6 +33,21 @@ const Section = (props) => {
             return <ProductCard key={p.title} product={p} />;
           }
         })}
+      </div>
+      <div className="hidden lg:block overflow-hidden px-2">
+        <div
+          className="flex m-2 gap-4 transition-transform ease-out duration-500"
+          style={{ transform: `translateX(-${curr * 40}%)` }}
+        >
+          {products.map((p) => {
+            if (
+              p.category.includes(props.catOne) ||
+              p.category[0] == props.catTwo
+            ) {
+              return <ProductCard key={p.title} product={p} />;
+            }
+          })}
+        </div>
       </div>
       <div className="hidden absolute z-20 left-0 inset-y-0 lg:flex items-center justify-between ">
         <button className="h-28" onClick={prev}>
