@@ -29,21 +29,54 @@ const page = ({ params }) => {
 
   return (
     <>
+      {/* MOBILE */}
       {products.map(
         (product) =>
           product.id == params.id && (
-            <div className="py-4 px-2 bg-neutral-800" key={product.id}>
+            <div
+              className="lg:hidden py-4 px-2 bg-neutral-800"
+              key={product.id}
+            >
               <div className="max-w-6xl mx-auto">
-                <div className="flex flex-col lg:flex-row gap-4">
-                  <div className="lg:w-1/2">
+                <div className="flex flex-col gap-4">
+                  <ProductImages images={product.images} />
+                  <Action product={product} />
+                  <ProductDetails product={product} />
+                </div>
+                <div className="space-y-2 my-2">
+                  <Specification specification={product.specifications} />
+                  <Overview overview={product.overview} />
+                  <ProductShowcase />
+                  <Reviews />
+                  <div className="rounded-md overflow-clip">
+                    <Section title="Similar Product" catOne="smartphones" />
+                  </div>
+                  <div className="p-4"></div>
+                </div>
+              </div>
+            </div>
+          )
+      )}
+
+      {/* DESKTOP */}
+      {products.map(
+        (product) =>
+          product.id == params.id && (
+            <div
+              className="hidden lg:block py-4 px-2 bg-neutral-800"
+              key={product.id}
+            >
+              <div className="max-w-6xl mx-auto">
+                <div className="flex gap-4">
+                  <div className="w-1/2">
                     <ProductImages images={product.images} />
                     <Action product={product} />
                   </div>
-                  <div className="lg:w-1/2">
+                  <div className="w-1/2">
                     <ProductDetails product={product} />
                   </div>
                 </div>
-                <div className="space-y-2 my-2 lg:space-y-4 lg:my-4">
+                <div className="space-y-4 my-4">
                   <Specification specification={product.specifications} />
                   <Overview overview={product.overview} />
                   <ProductShowcase />

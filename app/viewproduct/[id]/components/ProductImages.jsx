@@ -3,16 +3,44 @@ import React, { useState } from "react";
 
 const ProductImages = (props) => {
   const [imgUrl, setImgUrl] = useState(null);
+  const [curr, setCurr] = useState(0);
 
+  const prev = () => {
+    setCurr(curr == 0 ? 0 : curr - 1);
+  };
+
+  const next = () => {
+    setCurr(curr == 1 ? 1 : curr + 1);
+  };
   return (
     <>
       {/* MOBILE */}
-      <div className="lg:hidden flex p-4">
+      <div className="lg:hidden overflow-hidden px-4">
+        <div className="overflow-hidden">
+          <div
+            className="flex transition-transform ease-out duration-500"
+            style={{ transform: `translateX(-${curr * 38}%)` }}
+          >
+            {props.images.map((u, i) => {
+              if (i < 4) {
+                return (
+                  <img key={u} className="object-contain w-48 mx-16" src={u} />
+                );
+              }
+            })}
+          </div>
+        </div>
+        <div className="py-4">
+        <div className="mx-auto flex items-center gap-1 w-fit">
         {props.images.map((u, i) => {
-          if (i < 4) {
-            return <img key={u} className="object-contain w-48 mx-16" src={u} />;
-          }
-        })}
+              if (i < 4) {
+                return (
+                 <div className={`${curr==i&&"bg-neutral-200 p-1"} w-2 h-2 rounded-full border border-neutral-700`}></div>
+                );
+              }
+            })}
+        </div>
+        </div>
       </div>
 
       {/* DESKTOP */}
