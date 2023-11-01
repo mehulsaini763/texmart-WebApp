@@ -13,8 +13,8 @@ const Category = ({ url, category }) => {
     </div>
 
     {/* MOBILE */}
-    <div className="flex-shrink-0 lg:hidden" onClick={handleClick}>
-      <img className="w-20" src={url} alt="" />
+    <div className="lg:hidden" onClick={handleClick}>
+      <img src={url} alt="" />
     </div>
     </>
   );

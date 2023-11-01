@@ -75,7 +75,7 @@ const Categories = () => {
   return (
     <>
     {/* MOBILE */}
-      <div className="grid grid-cols-4 gap-2 py-4 lg:hidden">
+      <div className="mx-auto grid grid-cols-4 gap-2 py-4 lg:hidden">
         {categories.map((o, i) => {
           if (i < 8) {
             return <Category key={o.src} url={o.src} category={o.name} />;
