@@ -102,46 +102,4 @@ const CartItem = ({ index, profile, product }) => {
   );
 };
 
-{
-  /* <div>
-        <div className="flex my-2">
-          <img className="w-28 object-cover" src={product.thumbnail} alt="" />
-          <div className="flex flex-col gap-1 mx-2">
-            <p className="text-sm">{product.title}</p>
-            <p className="text-lg font-bold">₹{product.price}</p>
-            <p className="text-green-500">
-              {Math.round(product.discount)}% Off
-            </p>
-            <img
-              className="w-12 object-contain"
-              src={AssuredLogo.src}
-              alt="assured"
-            />
-          </div>
-        </div>
-        <div className="flex justify-between my-4 mx-2">
-          <div className="flex gap-2 ">
-            <button
-              className="rounded-full border-neutral-500 bg-neutral-800 h-6 w-6 flex items-center justify-center"
-              onClick={() => editCart("-")}
-            >
-              <div>-</div>
-            </button>
-            <div className="border-2 border-neutral-800 text-center flex items-center px-6">
-              <p>{product.quantity}</p>
-            </div>
-            <button
-              className="rounded-full border-neutral-500 bg-neutral-800 h-6 w-6 flex items-center justify-center"
-              onClick={() => editCart("+")}
-            >
-              <div>+</div>
-            </button>
-          </div>
-          <button className="text-sm" onClick={() => editCart("remove")}>
-            REMOVE
-          </button>
-        </div>
-      </div> */
-}
-
 export default CartItem;

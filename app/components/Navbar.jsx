@@ -48,6 +48,11 @@ const Navbar = ({ navType, navVal }) => {
             <div className="flex gap-4">
               <div
                 className="w-6 h-6"
+                onTouchEnd={() => {
+                  auth.currentUser == null
+                    ? setShowLogin(true)
+                    : setShowUser(true);
+                }}
                 onClick={() => {
                   auth.currentUser == null
                     ? setShowLogin(true)

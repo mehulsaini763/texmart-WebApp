@@ -18,7 +18,7 @@ const page = () => {
 
   return (
     <div className="mx-auto max-w-6xl flex flex-col gap-4 p-4 text-white">
-      <div className="flex gap-8 text-2xl items-center">
+      <div className="flex gap-8 text-2xl items-center justify-between lg:justify-normal">
         <p>My Addresses</p>
         <button className="text-yellow-300 font-bold text-lg">
           + Add Address
@@ -29,7 +29,7 @@ const page = () => {
           ? "No Addresses"
           : profile.addresses.map((a, i) => {
               return (
-                <div className="bg-neutral-900 rounded-md p-4 space-y-4 text-base max-w-xs">
+                <div className="bg-neutral-900 rounded-md p-4 space-y-4 text-base max-w-sm">
                   <div className="text-yellow-300 flex justify-between items-center font-semibold">
                     <p>{a.type}</p>
                     {i == 0 && (

@@ -26,6 +26,7 @@ const Action = ({ product }) => {
       }
 
       router.push(`/viewcart/user/${auth.currentUser.uid}`);
+      dispatch(getProfile());
     } else setShowLogin(true);
   };
 

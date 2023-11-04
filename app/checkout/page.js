@@ -53,14 +53,14 @@ const page = () => {
               <p className="text-base lg:text-lg font-bold">Available to Deliver @</p>
               <div className="flex items-center">
                 <div className="hidden lg:block">{`${profile.addresses[0].address}, ${profile.addresses[0].address2}, ${profile.addresses[0].landmark}, ${profile.addresses[0].city}, ${profile.addresses[0].state} - ${profile.addresses[0].pincode}`}</div>
-                <div>
+                <div className=" shrink-0">
                   <img
-                    className="object-contain p-4 lg:p-2 w-36"
+                    className="object-contain p-4 lg:p-2 w-28"
                     src={p.thumbnail}
                     alt=""
                   />
                 </div>
-                <div>{p.title}</div>
+                <div className="line-clamp-2 px-2">{p.title}</div>
               </div>
               <hr className="border-1 border-neutral-700 my-2"/>
             </div>
