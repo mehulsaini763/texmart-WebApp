@@ -17,6 +17,7 @@ const Navbar = ({ navType, navVal }) => {
   const router = useRouter();
   const [showUser, setShowUser] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const [searchValue, setSearchValue] = useState(navVal);
 
   const handleCart = () => {
     if (auth.currentUser != null) {
@@ -67,7 +68,8 @@ const Navbar = ({ navType, navVal }) => {
               className="w-full focus:outline-none"
               type="text"
               spellCheck="false"
-              value={navType == "search" ? navVal : undefined}
+              value={navType == "search" ? searchValue : undefined}
+              onChange={(e) => setSearchValue(e.target.value)}
               placeholder="What are you looking for?"
               onKeyDown={(e) => {
                 handleSearch(e);
