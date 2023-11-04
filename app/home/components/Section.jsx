@@ -50,7 +50,7 @@ const Section = (props) => {
       <div className="lg:hidden flex overflow-x-scroll gap-2">
         {products.map((p, i) => {
           if (i > 8) return;
-          <ProductCard key={p.title} product={p} />;
+          return <ProductCard key={p.title} product={p} />;
         })}
       </div>
       <div className="hidden lg:block overflow-hidden px-2">

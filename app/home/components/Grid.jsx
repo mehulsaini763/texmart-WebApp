@@ -9,7 +9,7 @@ const Grid = (props) => {
         <h1 className="text-lg font-semibold">{props.title}</h1>
         <div className="grid grid-cols-4 py-4 gap-4">
           <div className="col-span-4">
-            <Link href={"/products/s&Macbook"}>
+            <Link href={"/products?type=search&query=Macbook"}>
               <img
                 className="rounded-md hover:cursor-pointer"
                 src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1698839498/Croma%20Assets/CMS/New%20at%20croma/01-11-2023/HP_BigTile_NewAtCroma_macbook_1nov2023_ozpcg8.png?tr=w-720"
@@ -19,7 +19,7 @@ const Grid = (props) => {
           </div>
 
           <div className="col-span-2">
-            <Link href={"/products/s&Crossloop"}>
+            <Link href={"/products?type=search&query=Crossloop"}>
               <img
                 className="rounded-md hover:cursor-pointer"
                 src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1698853129/Croma%20Assets/CMS/New%20at%20croma/crossloops/HP_4Split_NewAtCroma_Crossloop_27Oct2023_sruivn.png?tr=w-480"
@@ -55,7 +55,7 @@ const Grid = (props) => {
             </Link>
           </div>
           <div className="col-span-2">
-            <Link href={"/products/s&croma"}>
+            <Link href={"/products/?type=search&query=Croma"}>
               <img
                 className="rounded-md hover:cursor-pointer"
                 src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1698300353/Croma%20Assets/CMS/Homepage%20Banners/01_Homepage%20Bugs%20Daily/Oct%202023/26-10-2023/HP_4Split_NewAtCroma_CromaTV_26Oct2023_r5nn4n.png?tr=w-480"
@@ -71,7 +71,7 @@ const Grid = (props) => {
         <h1 className="text-2xl font-semibold">{props.title}</h1>
         <div className="grid grid-cols-4 py-4 gap-4">
           <div className="col-span-2">
-            <Link href={"/products/s&Macbook"}>
+            <Link href={"/products?type=search&query=Macbook"}>
               <img
                 className="rounded-md hover:cursor-pointer"
                 src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1698839498/Croma%20Assets/CMS/New%20at%20croma/01-11-2023/HP_BigTile_NewAtCroma_macbook_1nov2023_ozpcg8.png?tr=w-720"
@@ -89,7 +89,7 @@ const Grid = (props) => {
             </Link>
           </div>
           <div>
-            <Link href={"/products/s&Crossloop"}>
+            <Link href={"/products?type=search&query=Crossloop"}>
               <img
                 className="rounded-md hover:cursor-pointer"
                 src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1698853129/Croma%20Assets/CMS/New%20at%20croma/crossloops/HP_4Split_NewAtCroma_Crossloop_27Oct2023_sruivn.png?tr=w-480"
@@ -116,7 +116,7 @@ const Grid = (props) => {
             </Link>
           </div>
           <div>
-            <Link href={"/products/s&croma"}>
+            <Link href={"/products?type=search&query=Croma"}>
               <img
                 className="rounded-md hover:cursor-pointer"
                 src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1698300353/Croma%20Assets/CMS/Homepage%20Banners/01_Homepage%20Bugs%20Daily/Oct%202023/26-10-2023/HP_4Split_NewAtCroma_CromaTV_26Oct2023_r5nn4n.png?tr=w-480"
