@@ -11,7 +11,7 @@ const Specification = ({ specification }) => {
       <div className="space-y-4">
         {Object.keys(specification).map((key, i) => {
           if (!fullView) {
-            if (i > Object.keys(specification).length / 4) {
+            if (i > Object.keys(specification).length / 5) {
               return;
             }
           }

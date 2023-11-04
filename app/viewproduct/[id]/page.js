@@ -12,6 +12,7 @@ import Loading from "@/app/components/Loading";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "@/app/store/productSlice";
 import { getProfile } from "@/app/store/profileSlice";
+import Navbar from "@/app/components/Navbar";
 
 const page = ({ params }) => {
   const dispatch = useDispatch();
@@ -21,7 +22,6 @@ const page = ({ params }) => {
     if (products == null) {
       dispatch(getProducts());
       dispatch(getProfile());
-      console.log("DATA FETCHED");
     }
   }, []);
 
@@ -29,6 +29,7 @@ const page = ({ params }) => {
 
   return (
     <>
+      <Navbar />
       {/* MOBILE */}
       {products.map(
         (product) =>
@@ -68,7 +69,7 @@ const page = ({ params }) => {
             >
               <div className="max-w-6xl mx-auto">
                 <div className="flex gap-4">
-                  <div className="w-1/2">
+                  <div className="bg-neutral-900 w-1/2 grid grid-cols-1 place-content-center rounded-md">
                     <ProductImages images={product.images} />
                     <Action product={product} />
                   </div>

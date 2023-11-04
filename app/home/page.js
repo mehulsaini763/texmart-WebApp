@@ -8,22 +8,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "@/app/store/productSlice";
 import { getProfile } from "@/app/store/profileSlice";
 import Loading from "../components/Loading";
+import Navbar from "@/app/components/Navbar";
 
 const page = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products.data);
-  
+
   useEffect(() => {
     if (products == null) {
       dispatch(getProducts());
       dispatch(getProfile());
-      console.log("DATA FETCHED");
     }
   }, []);
 
   if (useSelector((state) => state.products.data) == null) return <Loading />;
 
   return (
+    <>
+      <Navbar />
       <main className="flex flex-col lg:mx-auto lg:max-w-6xl lg:gap-4 lg:p-4">
         {/* MOBILE */}
         <div className="lg:hidden">
@@ -37,30 +39,15 @@ const page = () => {
           <Banner />
         </div>
 
-        <Section
-          title="Deals of the Day"
-          catOne="smartphones"
-          catTwo="laptops"
-        />
+        <Section title="Deals of the Day" random={true} />
         <Grid title="New at Texmart" />
-        <Section
-          title="Top Trending Deals"
-          catOne="smartphones"
-          catTwo="laptops"
-        />
-        <Section title="Festive Deals" catOne="smartphones" catTwo="laptops" />
-        <Section
-          title="Deals on Accessories"
-          catOne="smartphones"
-          catTwo="laptops"
-        />
-        <Section title="Deals on Audio" catOne="smartphones" catTwo="laptops" />
-        <Section
-          title="Kitchen Aplliances"
-          catOne="smartphones"
-          catTwo="laptops"
-        />
+        <Section title="Top Trending Deals" random={true} />
+        {/* <Section title="Festive Deals" catOne="smartphones" catTwo="laptops" /> */}
+        <Section title="Deals on Smartphones" catOne="smartphones" catTwo="" />
+        <Section title="Deals on Audio" catOne="headphones" catTwo="speakers" />
+        <Section title="Best of Wearables" catOne="wearables" catTwo="" />
       </main>
+    </>
   );
 };
 

@@ -6,7 +6,7 @@ const ProductDetails = ({ product }) => {
   return (
     <div className="flex flex-col gap-2 text-white">
       <div>
-        <h1 className="text-xl font-semibold">{product.title}</h1>
+        <h1 className="text-xl font-semibold line-clamp-3">{product.title}</h1>
         <div className="flex items-center">
           <p className="text-yellow-300">{product.rating}</p>
           <StarIcon className="text-yellow-300 w-4 h-4" />

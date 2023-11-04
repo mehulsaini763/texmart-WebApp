@@ -16,66 +16,55 @@ const Categories = () => {
 
   const categories = [
     {
-      name: "smartphones",
-      alternative: ["mobile", "phone"],
+      name: "Smartphones",
       src: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1676968095/Croma%20Assets/CMS/LP%20Page%20Banners/2023/01_HP_BUGS_LP_BUGS/FEB/21-02-2023/Category%20Navigation%20-%20Audio%20Split/CategoryNavigation_AudioSplit_Mobile_21Feb2023_y6hsfe.png?tr=w-480",
     },
     {
-      name: "television",
-      alternative: [],
+      name: "Television",
       src: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1676968095/Croma%20Assets/CMS/LP%20Page%20Banners/2023/01_HP_BUGS_LP_BUGS/FEB/21-02-2023/Category%20Navigation%20-%20Audio%20Split/CategoryNavigation_AudioSplit_TV_21Feb2023_repyuk.png?tr=w-480",
     },
     {
-      name: "laptops",
-      alternative: [],
+      name: "Laptop",
       src: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1683281227/Croma%20Assets/CMS/LP%20Page%20Banners/2023/HP%20Category%20Navigation/laptop_categoryicons_nixzuv.png?tr=w-480",
     },
     {
-      name: "headphones & earphones",
-      alternative: [],
+      name: "Headphones & Earphones",
       src: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1676968094/Croma%20Assets/CMS/LP%20Page%20Banners/2023/01_HP_BUGS_LP_BUGS/FEB/21-02-2023/Category%20Navigation%20-%20Audio%20Split/CategoryNavigation_AudioSplit_H_E_21Feb2023_cw375r.png?tr=w-480",
     },
     {
-      name: "refrigerator",
-      alternative: [],
+      name: "Refridgerators",
       src: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1676968094/Croma%20Assets/CMS/LP%20Page%20Banners/2023/01_HP_BUGS_LP_BUGS/FEB/21-02-2023/Category%20Navigation%20-%20Audio%20Split/CategoryNavigation_AudioSplit_Ref_21Feb2023_ztynzt.png?tr=w-480",
     },
     {
-      name: "home theaters & soundbars",
-      alternative: [],
+      name: "Home Theaters & soundbars",
       src: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1676968094/Croma%20Assets/CMS/LP%20Page%20Banners/2023/01_HP_BUGS_LP_BUGS/FEB/21-02-2023/Category%20Navigation%20-%20Audio%20Split/CategoryNavigation_AudioSplit_HT_SB_21Feb2023_rk8ohd.png?tr=w-480",
     },
     {
-      name: "air conditioners",
-      alternative: [],
+      name: "Air Conditioners",
       src: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1676968094/Croma%20Assets/CMS/LP%20Page%20Banners/2023/01_HP_BUGS_LP_BUGS/FEB/21-02-2023/Category%20Navigation%20-%20Audio%20Split/CategoryNavigation_AudioSplit_AC_21Feb2023_azyacw.png?tr=w-480",
     },
     {
-      name: "",
-      alternative: [],
+      name: "Washing Machines",
       src: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1683281227/Croma%20Assets/CMS/LP%20Page%20Banners/2023/HP%20Category%20Navigation/washingmachine_categoryicons_ktcdeu.png?tr=w-480",
     },
     {
-      name: "",
-      alternative: [],
+      name: "Tablets",
       src: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1683281228/Croma%20Assets/CMS/LP%20Page%20Banners/2023/HP%20Category%20Navigation/tablet_categoryicons_d9a5ru.png?tr=w-480",
     },
     {
-      name: "",
-      alternative: [],
-      src: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1676968095/Croma%20Assets/CMS/LP%20Page%20Banners/2023/01_HP_BUGS_LP_BUGS/FEB/21-02-2023/Category%20Navigation%20-%20Audio%20Split/CategoryNavigation_AudioSplit_S_M_21Feb2023_qllhag.png?tr=w-480",
+      name: "Cameras",
+      src: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1690521345/Croma%20Assets/CMS/Category%20icon/CategoryNavigation_AudioSplit_Cameras_21Feb2023_fxbmtt.png?tr=w-480",
     },
     {
-      name: "",
-      alternative: [],
+      name: "Wearables",
       src: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1683281228/Croma%20Assets/CMS/LP%20Page%20Banners/2023/HP%20Category%20Navigation/wearable_categoryicons_sl3n0l.png?tr=w-480",
     },
   ];
 
   return (
     <>
-    {/* MOBILE */}
-      <div className="mx-auto grid grid-cols-4 gap-2 py-4 lg:hidden">
+      {/* MOBILE */}
+      <div className="mx-auto grid grid-cols-4 gap-4 px-2 py-4 lg:hidden">
         {categories.map((o, i) => {
           if (i < 8) {
             return <Category key={o.src} url={o.src} category={o.name} />;

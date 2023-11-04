@@ -1,17 +1,16 @@
 import React from "react";
-import AssuredLogo from "../../../../public/texmartAssured.png";
+import AssuredLogo from "@/public/texmartAssured.png";
 import { useRouter } from "next/navigation";
 
 const Products = ({ products }) => {
   const router = useRouter();
   const goToProduct = (id) => {
-    router.push(`/product/${id}`);
+    router.push(`/viewproduct/${id}`);
   };
 
   if (products.length == 0) {
     return (
       <div className="p-8 text-white text-xl overflow-hidden">
-        {/* <img src={NoProduct.src} className="object-contain w-full" /> */}
         <p>No Products Available</p>
       </div>
     );

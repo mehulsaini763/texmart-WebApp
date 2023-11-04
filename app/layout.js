@@ -1,5 +1,4 @@
 import DataProvider from "./components/DataProvider";
-import Navbar from "./components/Navbar";
 import "./globals.css";
 
 export const metadata = {
@@ -12,7 +11,6 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="overflow-x-hidden h-screen bg-neutral-800 lg:min-w-[1024px]">
         <DataProvider>
-          <Navbar />
           {children}
         </DataProvider>
       </body>

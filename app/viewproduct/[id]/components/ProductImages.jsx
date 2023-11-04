@@ -1,9 +1,16 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 const ProductImages = (props) => {
   const [imgUrl, setImgUrl] = useState(null);
   const [curr, setCurr] = useState(0);
+
+  const [dragStart, setDragStart] = useState(0);
+  const [dragCurrent, setDragCurrent] = useState(0);
+  const [dragMove, setDragMove] = useState(0);
+  const [dragEnd, setDragEnd] = useState(0);
+
+  const imgRef = useRef();
 
   const prev = () => {
     setCurr(curr == 0 ? 0 : curr - 1);
@@ -12,36 +19,75 @@ const ProductImages = (props) => {
   const next = () => {
     setCurr(curr == 1 ? 1 : curr + 1);
   };
+
   return (
     <>
-      {/* MOBILE */}
-      <div className="lg:hidden overflow-hidden px-4">
-        <div className="overflow-hidden">
+      <>
+        {/* MOBILE */}
+        <div className="lg:hidden overflow-hidden px-8">
           <div
-            className="flex transition-transform ease-out duration-500"
-            style={{ transform: `translateX(-${curr * 38}%)` }}
-          >
-            {props.images.map((u, i) => {
-              if (i < 4) {
-                return (
-                  <img key={u} className="object-contain w-48 mx-16" src={u} />
+            className="overflow-hidden"
+            onTouchStart={(e) => {
+              setDragStart(e.touches[0].clientX);
+            }}
+            onTouchMove={(e) => {
+              setDragMove(
+                dragCurrent + -(0.1 * (dragStart - e.touches[0].clientX))
+              );
+              setDragEnd(e.touches[0].clientX);
+            }}
+            onTouchEnd={() => {
+              if (dragStart > dragEnd) {
+                setDragCurrent(
+                  dragCurrent - 103 < -(props.images.length * 103) + 103
+                    ? 0
+                    : dragCurrent - 103
                 );
+                setDragMove(
+                  dragCurrent - 103 < -(props.images.length * 103) + 103
+                    ? 0
+                    : dragCurrent - 103
+                );
+                setCurr(curr + 1 > props.images.length - 1 ? 0 : curr + 1);
+              } else {
+                setDragCurrent(
+                  dragCurrent + 103 > 0
+                    ? -props.images.length * 103 + 103
+                    : dragCurrent + 103
+                );
+                setDragMove(
+                  dragCurrent + 103 > 0
+                    ? -props.images.length * 103 + 103
+                    : dragCurrent + 103
+                );
+                setCurr(curr - 1 < 0 ? props.images.length - 1 : curr - 1);
               }
-            })}
+            }}
+          >
+            <div
+              ref={imgRef}
+              className="flex transition-transform ease-out duration-500"
+              style={{ transform: `translateX(${dragMove}%)` }}
+            >
+              {props.images.map((u) => (
+                <img key={u} className="object-contain w-48 mx-16" src={u} />
+              ))}
+            </div>
           </div>
         </div>
-        <div className="py-4">
-        <div className="mx-auto flex items-center gap-1 w-fit">
-        {props.images.map((u, i) => {
-              if (i < 4) {
-                return (
-                 <div className={`${curr==i&&"bg-neutral-200 p-1"} w-2 h-2 rounded-full border border-neutral-700`}></div>
-                );
-              }
-            })}
+        <div className="lg:hidden py-4">
+          <div className="mx-auto flex items-center gap-1 w-fit">
+            {props.images.map((u, i) => (
+              <div
+                key={i}
+                className={`${
+                  curr == i && "bg-neutral-200 p-1"
+                } w-2 h-2 rounded-full border border-neutral-700`}
+              ></div>
+            ))}
+          </div>
         </div>
-        </div>
-      </div>
+      </>
 
       {/* DESKTOP */}
       <div className="hidden lg:flex bg-neutral-900 rounded-md p-4 gap-4">

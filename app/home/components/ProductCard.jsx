@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
 import React from "react";
 import { StarIcon } from "@heroicons/react/24/solid";
-import HalfStar from "../assets/halfstar.png";
+import HalfStar from "@/public/halfstar.png";
 import AddToWishlist from "./AddToWishlist";
 
 const ProductCard = ({ product }) => {
@@ -41,13 +41,16 @@ const ProductCard = ({ product }) => {
           </sup>
         </p>
         <p className="flex">
-          {[...Array(Math.floor(product.rating))].map((e, i) => {
-            return <StarIcon key={i} className="text-yellow-300 h-4 w-4" />;
-          })}
-          {product.rating % 10 != 0 ? (
+          {product.rating == "" ? (
+            [...Array(5)].map((e, i) => {
+              return <StarIcon key={i} className="text-neutral-800 h-4 w-4" />;
+            })
+          ) : product.rating - Math.floor(product.rating) == 0 ? (
             <>
-              <img src={HalfStar.src} className="w-4 h-4" />
-              {[...Array(5 - (Math.floor(product.rating) + 1))].map((e, i) => {
+              {[...Array(+product.rating)].map((e, i) => {
+                return <StarIcon key={i} className="text-yellow-300 h-4 w-4" />;
+              })}
+              {[...Array(5 - Math.floor(product.rating))].map((e, i) => {
                 return (
                   <StarIcon key={i} className="text-neutral-800 h-4 w-4" />
                 );
@@ -55,7 +58,11 @@ const ProductCard = ({ product }) => {
             </>
           ) : (
             <>
-              {[...Array(5 - product.rating)].map((e, i) => {
+              {[...Array(Math.floor(product.rating))].map((e, i) => {
+                return <StarIcon key={i} className="text-yellow-300 h-4 w-4" />;
+              })}
+              <img src={HalfStar.src} className="w-4 h-4" />
+              {[...Array(5 - Math.ceil(product.rating))].map((e, i) => {
                 return (
                   <StarIcon key={i} className="text-neutral-800 h-4 w-4" />
                 );

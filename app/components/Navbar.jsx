@@ -13,7 +13,7 @@ import MiniLogin from "./MiniLogin";
 import FullLogin from "./FullLogin";
 import LocationButton from "./LocationButton";
 
-const Navbar = ({ params }) => {
+const Navbar = ({ navType, navVal }) => {
   const router = useRouter();
   const [showUser, setShowUser] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
@@ -26,7 +26,7 @@ const Navbar = ({ params }) => {
 
   const handleSearch = (e) => {
     if (e.key == "Enter") {
-      router.push(`/products/s&${e.target.value}`);
+      router.push(`/products?type=search&query=${e.target.value}`);
     }
   };
 
@@ -66,18 +66,19 @@ const Navbar = ({ params }) => {
             <input
               className="w-full focus:outline-none"
               type="text"
+              spellCheck="false"
               value={
-                params != undefined
-                  ? () => {
-                      if (params.type[0] == "s") {
-                        const val = split(params.type, "%26");
-                        return val[1];
-                      } else return undefined;
-                    }
+                navType != undefined
+                  ? navType == "s"
+                    ? navVal
+                    : undefined
                   : undefined
               }
               placeholder="What are you looking for?"
-              onKeyDown={(e) => handleSearch(e)}
+              onKeyDown={(e) => {
+                handleSearch(e);
+                setTimeout(() => (e.target.event = undefined), 2000);
+              }}
             />
           </div>
         </div>
