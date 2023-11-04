@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import FullLogin from "@/app/components/FullLogin";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfile, updateProfile } from "@/app/store/profileSlice";
+import { auth } from "@/app/firebase";
 
 const Action = ({ product }) => {
   const router = useRouter();
