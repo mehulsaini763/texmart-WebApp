@@ -8,14 +8,6 @@ const Products = ({ products }) => {
     router.push(`/viewproduct/${id}`);
   };
 
-  if (products.length == 0) {
-    return (
-      <div className="p-8 text-white text-xl overflow-hidden">
-        <p>No Products Available</p>
-      </div>
-    );
-  }
-
   return (
     <>
       {products.map((p) => (

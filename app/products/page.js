@@ -8,6 +8,8 @@ import SortFilter from "./components/SortFilter";
 import Products from "./components/Products";
 import Loading from "@/app/components/Loading";
 import Navbar from "@/app/components/Navbar";
+import NotFound from "@/public/noproductfound.png";
+import { split } from "postcss/lib/list";
 
 const page = () => {
   const dispatch = useDispatch();
@@ -23,9 +25,14 @@ const page = () => {
       const temparr = [];
       initialProducts.forEach((p) => {
         if (params.get("type") == "search") {
-          if (p.title.toLowerCase().includes(params.get("query").toLowerCase())) {
+          if (
+            p.title.toLowerCase().includes(params.get("query").toLowerCase())
+          ) {
             temparr.push(p);
           } else if (p.category.includes(params.get("query"))) temparr.push(p);
+        } else if (params.get("type") == "multi") {
+          const categories = split(params.get("query"), "&");
+          categories.map((c) => p.category.includes(c.toLowerCase()) && temparr.push(p));
         } else {
           if (p.category.includes(params.get("query").toLowerCase())) {
             temparr.push(p);
@@ -34,15 +41,30 @@ const page = () => {
       });
       setProducts([...temparr]);
     }
-  }, [initialProducts,params]);
+  }, [initialProducts, params]);
 
   if (products == null) {
     return <Loading />;
   }
 
+  if (products.length == 0) {
+    return (
+      <div className="flex flex-col h-screen">
+        <Navbar navType={params.get("type")} navVal={params.get("query")} />
+        <div className="grid h-full grid-cols-1 place-content-center p-8 lg:p-16">
+          <div className="text-center">
+            <img className="mx-auto" src={NotFound.src} />
+            <p className="text-white text-lg lg:text-2xl">No Products Found</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       <Navbar navType={params.get("type")} navVal={params.get("query")} />
+
       <div className="mx-auto max-w-6xl bg-neutral-900 lg:bg-neutral-800">
         {/* MOBILE */}
         <div className="lg:hidden">

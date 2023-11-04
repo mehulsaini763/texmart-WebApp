@@ -67,13 +67,7 @@ const Navbar = ({ navType, navVal }) => {
               className="w-full focus:outline-none"
               type="text"
               spellCheck="false"
-              value={
-                navType != undefined
-                  ? navType == "s"
-                    ? navVal
-                    : undefined
-                  : undefined
-              }
+              value={navType == "search" ? navVal : undefined}
               placeholder="What are you looking for?"
               onKeyDown={(e) => {
                 handleSearch(e);

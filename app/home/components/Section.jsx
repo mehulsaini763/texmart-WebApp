@@ -1,11 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import ButtonLeft from "./ButtonLeft";
 import ButtonRight from "./ButtonRight";
 import { useSelector } from "react-redux";
 
 const Section = (props) => {
-  const scrollRef = useRef(null);
   const [products, setProducts] = useState(
     useSelector((state) => state.products.data)
   );
@@ -49,9 +48,10 @@ const Section = (props) => {
       </h1>
 
       <div className="lg:hidden flex overflow-x-scroll gap-2">
-        {products.map((p) => (
-          <ProductCard key={p.title} product={p} />
-        ))}
+        {products.map((p, i) => {
+          if (i > 8) return;
+          <ProductCard key={p.title} product={p} />;
+        })}
       </div>
       <div className="hidden lg:block overflow-hidden px-2">
         <div
