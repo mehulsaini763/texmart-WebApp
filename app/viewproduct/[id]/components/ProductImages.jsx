@@ -39,26 +39,26 @@ const ProductImages = (props) => {
             onTouchEnd={() => {
               if (dragStart > dragEnd) {
                 setDragCurrent(
-                  dragCurrent - 103 < -(props.images.length * 103) + 103
+                  dragCurrent - 100 < -(props.images.length * 100) + 100
                     ? 0
-                    : dragCurrent - 103
+                    : dragCurrent - 100
                 );
                 setDragMove(
-                  dragCurrent - 103 < -(props.images.length * 103) + 103
+                  dragCurrent - 100 < -(props.images.length * 100) + 100
                     ? 0
-                    : dragCurrent - 103
+                    : dragCurrent - 100
                 );
                 setCurr(curr + 1 > props.images.length - 1 ? 0 : curr + 1);
               } else {
                 setDragCurrent(
-                  dragCurrent + 103 > 0
-                    ? -props.images.length * 103 + 103
-                    : dragCurrent + 103
+                  dragCurrent + 100 > 0
+                    ? -props.images.length * 100 + 100
+                    : dragCurrent + 100
                 );
                 setDragMove(
-                  dragCurrent + 103 > 0
-                    ? -props.images.length * 103 + 103
-                    : dragCurrent + 103
+                  dragCurrent + 100 > 0
+                    ? -props.images.length * 100 + 100
+                    : dragCurrent + 100
                 );
                 setCurr(curr - 1 < 0 ? props.images.length - 1 : curr - 1);
               }
