@@ -62,7 +62,7 @@ const FullLogin = ({ setShowLogin }) => {
   }
 
   return (
-    <div className="fixed inset-0 bg-neutral-800/80 z-50 my-auto grid  place-content-center text-white">
+    <div className="fixed inset-0 bg-neutral-800/80 z-50 my-auto grid place-content-center text-white">
       <div className="bg-neutral-900 p-4 rounded-md bg">
         {showOTP ? (
           <>

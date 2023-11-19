@@ -39,7 +39,7 @@ const Navbar = ({ navType, navVal }) => {
           <div className="flex items-center gap-2">
             <Menu />
             <button
-              className="text-2xl font-bold text-white mb-2 text-start"
+              className="text-2xl font-bold text-white text-start"
               onClick={() => router.push("/")}
             >
               texmart

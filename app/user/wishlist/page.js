@@ -27,24 +27,30 @@ const page = () => {
                 <div key={p.id}>
                   <div className="flex">
                     <div className="shrink-0">
-                      <img className="w-28 lg:w-48 object-contain" src={p.thumbnail} />
+                      <img
+                        className="w-28 lg:w-48 object-contain"
+                        src={p.thumbnail}
+                      />
                     </div>
                     <div className="space-y-2 lg:space-y-4 w-full px-4 lg:px-8">
-                      <p className="text-base lg:text-xl font-bold line-clamp-2">{p.title}</p>
-                      <div className="flex justify-between ">
-                        <div className="space-y-4">
-                          <p className="text-lg lg:text-2xl font-black">₹{p.price}</p>
+                      <p className="text-base lg:text-xl font-bold line-clamp-2">
+                        {p.title}
+                      </p>
+                      <div className="flex flex-col justify-between gap-2">
+                        <div className="flex justify-between items-center">
+                          <p className="text-lg lg:text-2xl font-black">
+                            ₹{p.price}
+                          </p>
                           <p className="px-2 py-1 text-xs lg:text-base font-black border rounded-md">
                             {p.discount}% OFF
                           </p>
-                          <p className="hidden lg:block">Added On</p>
                         </div>
-                        <div className="flex flex-col gap-2 lg:gap-4">
-                          <button className="text-xs lg:text-base font-bold border rounded-md px-2 lg:py-2 lg:px-4">
-                            Add to Cart
-                          </button>
-                          <button className="text-xs lg:text-base font-bold border rounded-md px-2 lg:py-2 lg:px-4">
+                        <div className="flex justify-between items-center">
+                          <button className="px-2 py-1 text-xs lg:text-base font-black border rounded-md">
                             Delete
+                          </button>
+                          <button className="px-2 py-1 text-xs lg:text-base font-black border rounded-md">
+                            Add to Cart
                           </button>
                         </div>
                       </div>

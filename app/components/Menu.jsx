@@ -11,7 +11,7 @@ const Menu = () => {
       <Bars3Icon className="w-6 h-6 text-white" />
       {menuState && (
         <div
-          className="absolute inset-0 z-50 "
+          className={`absolute inset-0 z-50 py-2 transition-[height] duration-300 ${menuState?"h-full":"h-0"}`}
           onClick={() => setMenuState(!menuState)}
         >
           <div className="h-full w-2/3 lg:my-16 lg:mx-64 text-white lg:h-max lg:w-max bg-neutral-900 shadow-[0px_0px_10px_0px_rgba(38,38,38,1)] rounded-md">

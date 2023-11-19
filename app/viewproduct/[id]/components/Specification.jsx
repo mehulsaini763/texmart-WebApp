@@ -3,10 +3,14 @@ import React, { useState } from "react";
 const Specification = ({ specification }) => {
   const [fullView, setFullView] = useState(false);
   return (
-    <div className="bg-neutral-900 p-4 lg:p-8 text-white font-semibold rounded-md text-xl space-y-4 h-1/3">
+    <div
+      className={`relative bg-neutral-900 p-4 lg:p-8 text-white font-semibold rounded-md text-xl space-y-4 ${
+        fullView ? "h-fit" : "h-96"
+      } overflow-hidden`}
+    >
       <div className="space-y-2">
         <p>Specification</p>
-        <hr className="border-neutral-700fd"/>
+        <hr className="border-neutral-700" />
       </div>
       <div className="space-y-4">
         {Object.keys(specification).map((key, i) => {
@@ -32,14 +36,23 @@ const Specification = ({ specification }) => {
             </div>
           );
         })}
-        {!fullView && (
-          <button
-            className="border rounded-md w-full text-base p-2 lg:text-xl"
-            onClick={() => setFullView(true)}
-          >
-            View More
-          </button>
-        )}
+        <div className="absolute bottom-0 inset-x-0 bg-neutral-900 p-4">
+          {!fullView ? (
+            <button
+              className="border rounded-md w-full text-base p-2 lg:text-xl"
+              onClick={() => setFullView(true)}
+            >
+              View More
+            </button>
+          ) : (
+            <button
+              className="border rounded-md w-full text-base p-2 lg:text-xl"
+              onClick={() => setFullView(false)}
+            >
+              View Less
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

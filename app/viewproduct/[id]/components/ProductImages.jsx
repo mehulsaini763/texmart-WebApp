@@ -70,7 +70,9 @@ const ProductImages = (props) => {
               style={{ transform: `translateX(${dragMove}%)` }}
             >
               {props.images.map((u) => (
-                <img key={u} className="object-contain w-48 mx-16" src={u} />
+                <div className="shrink-0 w-full h-48">
+                  <img key={u} className="object-contain w-full h-full" src={u} />
+                </div>
               ))}
             </div>
           </div>

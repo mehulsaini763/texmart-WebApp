@@ -69,7 +69,7 @@ const page = () => {
         {/* MOBILE */}
         <div className="lg:hidden">
           <div className="flex items-center justify-between px-4 py-2 text-lg text-white">
-            <p>
+            <p className="text-xs">
               {params.get("type") == "search"
                 ? `Showing Results for "${params.get("query")}"`
                 : params.get("query")}
@@ -78,6 +78,7 @@ const page = () => {
           </div>
           <SortFilter products={products} setProducts={setProducts} />
           <Products products={products} />
+          <hr className="p-4"/>
         </div>
 
         {/* DESKTOP */}

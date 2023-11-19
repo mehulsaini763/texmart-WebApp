@@ -50,7 +50,7 @@ const page = ({ params }) => {
                   <ProductShowcase />
                   <Reviews />
                   <div className="rounded-md overflow-clip">
-                    <Section title="Similar Product" catOne="smartphones" />
+                    <Section title="Similar Product" catOne={product.category[0]} />
                   </div>
                   <div className="p-4"></div>
                 </div>
@@ -83,7 +83,7 @@ const page = ({ params }) => {
                   <ProductShowcase />
                   <Reviews />
                   <div className="rounded-md overflow-clip">
-                    <Section title="Similar Product" catOne="smartphones" />
+                    <Section title="Similar Product" catOne={product.category[0]} />
                   </div>
                   <div className="p-4"></div>
                 </div>
